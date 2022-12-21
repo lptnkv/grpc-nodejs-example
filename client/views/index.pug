@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Shopping list
+    body 
+        h1 shopping list
+        ul 
+            for item in items
+                li(class="list-item" data-id=item.id data-name=item.name data-qty=item.quantity data-done=item.isDone)
+                    = item.name 
+                    input(type="number", name="" value=item.quantity style="width:40px; margin-left: 10px;")
+                    input(type="checkbox" checked=item.isDone)
+                    button() remove
+        form(action="/save" method="POST")
+            label(for="title") Title:
+            br
+            input(type="text", name="name", placeholder="name", id="name") 
+            input(type="submit", value="add")
+    
+        script
+            include script.js

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+service ShoppingListService {
+    rpc GetAll(Empty) returns (List) {}
+    rpc Get (ItemRequestId) returns (Item) {}
+    rpc Insert (Item) returns (Item) {}
+    rpc Update (Item) returns (Item) {}
+    rpc Remove (ItemRequestId) returns (Empty) {}
+}
+
+message Empty {}
+
+message Success {
+    bool isSuccessful = 1;
+}
+
+message Item {
+    string id = 1;
+    string name = 2;
+    bool isDone = 3;
+    int32 quantity = 4;
+}
+
+message List {
+    repeated Item items = 1;
+}
+
+message ItemRequestId {
+    string id = 1;
+}
